@@ -21,3 +21,17 @@ document.querySelectorAll('section').forEach(section => {
         section.style.background = 'var(--card-bg)';
     });
 });
+
+// Ouvre tous les liens (sauf mailto, tel, ancre) dans un nouvel onglet
+setTimeout(() => {
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      href.startsWith('#')
+    ) return;
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+}, 100);
